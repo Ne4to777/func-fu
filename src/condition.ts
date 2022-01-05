@@ -8,18 +8,28 @@ import {
 /**
  * If/Then/Else Synchronous
  */
-export const ifElseSync: IfElseSync = (p, onTrue, onFalse) => x => p(x) ? onTrue(x) : onFalse?.(x)
+export const ifElseSync: IfElseSync = (p, onTrue, onFalse) => x => {
+    if (p(x)) return onTrue(x)
+    return onFalse ? onFalse(x) : x
+}
 /**
  * If/Then/Else Asynchronous
  */
-export const ifElseAsync: IfElseAsync = (p, onTrue, onFalse) => async x => await p(x) ? onTrue(x) : onFalse?.(x)
+export const ifElseAsync: IfElseAsync = (p, onTrue, onFalse) => async x => {
+    if (await p(x)) return onTrue(x)
+    return onFalse ? onFalse(x) : x
+}
 /**
  * If/Then/Else Autodetect
  */
 export const ifElse: IfElse = (p, onTrue, onFalse) => x => {
     const res = p(x)
-    if (res instanceof Promise) return res.then(y => y ? onTrue(x) : onFalse?.(x))
-    return res ? onTrue(x) : onFalse?.(x)
+    if (res instanceof Promise) return res.then(y => {
+        if (y) return onTrue(x)
+        return onFalse ? onFalse(x) : x
+    })
+    if (res) return onTrue(x)
+    return onFalse ? onFalse(x) : x
 }
 /**
  * If Or Default Synchronous

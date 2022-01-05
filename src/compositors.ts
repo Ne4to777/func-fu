@@ -34,7 +34,7 @@ export const parallelize = Y((fR => acc => f => n => n > 1
     : acc
 ) as Parallelize)(B)(B(S))
 /**
- * Compose itself the n times
+ * Compose function the n times
  */
 export const autocompose: Autocompose = f => Y((fR => n => n > 1
     ? B(f)(fR(n - 1))
@@ -86,12 +86,20 @@ export const paraAsync: Para = (...fs) => async x => {
 export const para: Para = (...fs) => x => {
     const res = []
     let hasPromise = false
+
     for (let i = 0; i < fs.length; i += 1) {
-        const value = fs[i](x)
-        if (!hasPromise && value instanceof Promise) hasPromise = true
-        res[i] = value
+        res[i] = fs[i](x)
+        if (res[i] instanceof Promise) {
+            hasPromise = true
+            break
+        }
     }
-    return hasPromise ? Promise.all(res) : res
+
+    if (!hasPromise) return res
+
+    for (let i = res.length; i < fs.length; i += 1) res[i] = fs[i](x)
+
+    return Promise.all(res)
 }
 /**
  * Side Synchronous
