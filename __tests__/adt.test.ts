@@ -1,6 +1,5 @@
-import {ap, chain, compose, contramap, extend, extract, map, of, equals} from '../adt';
-import {B, I, T, C} from '../combinators'
-import {double, inc, square} from '../math';
+import {ap, chain, compose, contramap, extend, extract, map, of, equals} from '../src/adt';
+import {B, I, T, C} from '../src/combinators'
 
 declare global {
     namespace jest {
@@ -22,6 +21,9 @@ expect.extend({
     })
 })
 
+const inc = (x: number) => x + 1
+const double = (x: number) => x * 2
+const square = (x: number) => x ** 2
 const value = 3
 const a = of(value)
 const f = inc

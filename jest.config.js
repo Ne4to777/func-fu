@@ -4,7 +4,7 @@ module.exports = {
     testEnvironment: 'node',
     testPathIgnorePatterns: ['dist', 'node_modules'],
     testMatch: [
-        '<rootDir>/src/__tests__/**/*.test.ts'
+        '<rootDir>/__tests__/**/*.test.ts'
     ],
     transform: {
         '\\.ts$': 'esbuild-runner/jest',
