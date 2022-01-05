@@ -15,7 +15,7 @@ for (let i = 0; i < size; i += 1) {
     fsAsync[i] = incAsync
 }
 for (let i = 0; i < size; i += 1) {
-    fsMixed[i] = i < 5e4 ? incSync : incAsync
+    fsMixed[i] = i < size / 2 ? incSync : incAsync
 }
 
 describe('Compositors', () => {
