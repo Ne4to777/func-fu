@@ -1,0 +1,60 @@
+{
+    "root": true,
+    "parserOptions": {
+        "sourceType": "module",
+        "impliedStrict": true
+    },
+    "globals": {
+        "window": "readonly",
+        "document": "readonly",
+        "_require": "readonly",
+        "__non_webpack_require__": "readonly"
+    },
+    "env": {
+        "jest/globals": true,
+        "es2021": true
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "plugins": [
+                "prettier",
+                "jest"
+            ],
+            "extends": [
+                "plugin:@typescript-eslint/recommended",
+                "airbnb-base",
+                "airbnb-base/rules/strict",
+                "plugin:prettier/recommended"
+            ],
+            "rules": {
+                "import/prefer-default-export": "off",
+                "@typescript-eslint/no-namespace": "off",
+                "no-restricted-syntax": "off",
+                "import/extensions": "off",
+                "import/no-unresolved": "off",
+                "no-console": "off",
+                "strict": "off",
+                "no-use-before-define": "off",
+                "implicit-arrow-linebreak": "off",
+                "object-curly-newline": "off",
+                "no-confusing-arrow": "off",
+                "operator-linebreak": "off",
+                "comma-dangle": "off",
+                "quotes": "error",
+                "indent": "off",
+                "prettier/prettier": "off",
+                "@typescript-eslint/indent": "error",
+                "@typescript-eslint/no-explicit-any": "off",
+                "@typescript-eslint/ban-ts-comment": "off",
+                "no-unused-vars": "off",
+                "function-paren-newline": "off",
+                "consistent-return": "off",
+                "no-await-in-loop": "off"
+            }
+        }
+    ]
+}
