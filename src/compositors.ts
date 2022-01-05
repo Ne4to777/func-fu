@@ -46,11 +46,7 @@ export const pipeAsync: Pipe = (...fs) => async x => {
 
 export const pipe: Pipe = (...fs) => x => {
     let res = x
-    for (let i = 0; i < fs.length; i += 1) {
-        res = res instanceof Promise
-            ? res.then(fs[i])
-            : fs[i](res)
-    }
+    for (let i = 0; i < fs.length; i += 1) res = res instanceof Promise ? res.then(fs[i]) : fs[i](res)
     return res
 }
 
