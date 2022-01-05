@@ -2,7 +2,7 @@
     "name": "func-fu",
     "version": "1.0.0",
     "description": "Combinators and compositors",
-    "main": "bin/func-fu.js",
+    "main": "index.js",
     "scripts": {
         "build": "npm run build:ts && npm run build:files",
         "build:ts": "npm run remove:dist && npx tsc --build tsconfig.release.json",
