@@ -1,30 +1,24 @@
-import {throwError, tryCatch, tryCatchAsync, tryCatchSync} from '../src';
+import {throwErrorSync, throwError, tryCatchSync, tryCatch} from '../src/compositors/exception';
+import {I} from '../src/combinators';
 
 const incAsync = async (x: any) => x + 1
 const incSync = (x: any) => x + 1
 
-const throwSomeErrorSync = () => throwError(new Error('hoho'))
-const throwSomeErrorAsync = () => throwError(Promise.reject(new Error('hoho')))
+const throwSomeErrorSync = throwErrorSync((x: any) => new Error(x))
+const throwSomeError = throwError((x: any) => Promise.reject(new Error(x)))
 
 describe('Exception', () => {
 
     describe('tryCatch', () => {
 
         test('Sync', async () => {
-            expect(() => tryCatchSync(throwSomeErrorSync)(0)).toThrow('hoho')
+            expect(() => tryCatchSync(throwSomeErrorSync, throwErrorSync(I))('hoho')).toThrow('hoho')
             expect(tryCatchSync(throwSomeErrorSync, (err, x) => incSync(x))(0)).toEqual(1)
         });
 
         test('Async', async () => {
-            await expect(tryCatchAsync(throwSomeErrorAsync)(0)).rejects.toThrow('hoho')
-            expect(await tryCatchAsync(throwSomeErrorAsync, (err, x) => incAsync(x))(0)).toEqual(1)
-        });
-
-        test('Auto', async () => {
-            expect(() => tryCatch(throwSomeErrorSync)(0)).toThrow('hoho')
-            expect(tryCatch(throwSomeErrorSync, (err, x) => incSync(x))(0)).toEqual(1)
-            await expect(tryCatch(throwSomeErrorAsync)(0)).rejects.toThrow('hoho')
-            expect(await tryCatch(throwSomeErrorAsync, (err, x) => incAsync(x))(0)).toEqual(1)
+            await expect(tryCatch(throwSomeError, throwError(I))('hoho')).rejects.toThrow('hoho')
+            expect(await tryCatch(throwSomeError, (err, x) => incAsync(x))(0)).toEqual(1)
         });
     })
 })

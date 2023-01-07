@@ -1,7 +1,9 @@
-import {pipe, pipeSync, pipeAsync, para, paraAsync, paraSync, sideSync, side, sideAsync} from '../src';
+import {pipe, pipeSync} from '../src/compositors/pipe';
+import {para, paraSync} from '../src/compositors/para';
+import {side, sideSync} from '../src/compositors/side';
 
-const incAsync = async (x: any) => x + 1
 const incSync = (x: any) => x + 1
+const incAsync = async (x: any) => x + 1
 const fsSync: any[] = []
 const fsAsync: any[] = []
 const fsMixed: any[] = []
@@ -27,13 +29,7 @@ describe('Compositors', () => {
         });
 
         test('Async', async () => {
-            expect(await pipeAsync(...fsSync)(0)).toEqual(size)
-            expect(await pipeAsync(...fsAsync)(0)).toEqual(size)
-            expect(await pipeAsync(...fsMixed)(0)).toEqual(size)
-        });
-
-        test('Auto', async () => {
-            expect(pipe(...fsSync)(0)).toEqual(size)
+            expect(await pipe(...fsSync)(0)).toEqual(size)
             expect(await pipe(...fsAsync)(0)).toEqual(size)
             expect(await pipe(...fsMixed)(0)).toEqual(size)
         });
@@ -45,13 +41,7 @@ describe('Compositors', () => {
         });
 
         test('Async', async () => {
-            expect(await paraAsync(...fsSync)(0)).toHaveLength(size)
-            expect(await paraAsync(...fsAsync)(0)).toHaveLength(size)
-            expect(await paraAsync(...fsMixed)(0)).toHaveLength(size)
-        });
-
-        test('Auto', async () => {
-            expect(para(...fsSync)(0)).toHaveLength(size)
+            expect(await para(...fsSync)(0)).toHaveLength(size)
             expect(await para(...fsAsync)(0)).toHaveLength(size)
             expect(await para(...fsMixed)(0)).toHaveLength(size)
         });
@@ -63,12 +53,7 @@ describe('Compositors', () => {
         });
 
         test('Async', async () => {
-            expect(await sideAsync(incSync)(0)).toEqual(0)
-            expect(await sideAsync(incAsync)(0)).toEqual(0)
-        });
-
-        test('Auto', async () => {
-            expect(side(incSync)(0)).toEqual(0)
+            expect(await side(incSync)(0)).toEqual(0)
             expect(await side(incAsync)(0)).toEqual(0)
         });
     })

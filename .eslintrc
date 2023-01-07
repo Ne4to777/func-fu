@@ -4,12 +4,6 @@
         "sourceType": "module",
         "impliedStrict": true
     },
-    "globals": {
-        "window": "readonly",
-        "document": "readonly",
-        "_require": "readonly",
-        "__non_webpack_require__": "readonly"
-    },
     "env": {
         "jest/globals": true,
         "es2021": true

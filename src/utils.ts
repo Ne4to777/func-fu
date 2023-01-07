@@ -1,4 +1,4 @@
-export const delay = (n: number) => (f: (...xs: any[]) => any) => setTimeout(f, n)
+export const delay = (n: number) => (f: (...xs: any[]) => any): any => setTimeout(f, n)
 
 const {hrtime, memoryUsage} = process
 const {log} = console
@@ -14,3 +14,5 @@ export const startMeasure: any = () => (startTime => () => log(metricsFormatter(
     timeFormatter(hrtime(startTime)),
     Object.entries(memoryUsage()).map(memoryItemFormatter)
 ])))(hrtime())
+
+export const typeOf = <X>(x: X): string => Object.prototype.toString.call(x).slice(8, -1).toLowerCase()

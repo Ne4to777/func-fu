@@ -11,31 +11,31 @@ export const K: KType = x => () => x
 /**
  * Substitution (Connector)
  */
-export const S: SType = f => g => (...xs) => f(...xs)(g(...xs))
+export const S: SType = f => g => x => f(x)(g(x))
 /**
  * Compose (Compositor)
  */
-export const B: BType = f => g => (...xs) => f(g(...xs))
+export const B: BType = f => g => x => f(g(x))
 /**
  * Apply (Applicator)
  */
-export const A: AType = f => (...xs) => f(...xs)
+export const A: AType = f => x => f(x)
 /**
  * Thrush
  */
-export const T: TType = (...xs) => f => f(...xs)
+export const T: TType = x => f => f(x)
 /**
  * Duplication (Duplicator)
  */
-export const W: WType = f => (...xs) => f(...xs)(...xs)
+export const W: WType = f => x => f(x)(x)
 /**
  * Flip (Permutator)
  */
-export const C: CType = f => y => (...xs) => f(...xs)(y)
+export const C: CType = f => y => x => f(x)(y)
 /**
  * Psi
  */
-export const P: PType = f => g => (...xs) => (...ys) => f(g(...xs))(g(...ys))
+export const P: PType = f => g => x => y => f(g(x))(g(y))
 /**
  * UofU
  */
@@ -43,8 +43,4 @@ export const U: UType = f => f(f)
 /**
  * Fixed-point
  */
-export const Y: YType = f => U((g: any) => f((...xs: any) => U(g)(...xs)))
-
-// export const L = f => g => k => x => f(g(x))(k(x)) // parallelize
-
-
+export const Y: YType = f => U((g: any) => f((x: any) => U(g)(x)))

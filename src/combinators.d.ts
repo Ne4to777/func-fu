@@ -1,11 +1,11 @@
-export type IType = (x?: any) => any
-export type KType = (x?: any) => (y?: any) => any
-export type SType = (f: any) => (g: any) => (x?: any) => any
-export type BType = (f: any) => (g: any) => (x?: any) => any
-export type AType = (f: any) => (x?: any) => any
-export type TType = (x?: any) => (f: any) => any
-export type WType = (f: any) => (x?: any) => any
-export type CType = (f: any) => (y?: any) => (x?: any) => any
-export type PType = (f: any) => (g: any) => (x?: any) => (y?: any) => any
+export type IType = <X>(x: X) => X
+export type KType = <X>(x: X) => <Y>(y: Y) => X
+export type SType = <X, Y, R>(f: (x: X) => (y: Y) => R) => (g: (x: X) => Y) => (x: X) => R
+export type BType = <Y, R>(f: (y: Y) => R) => <X>(g: (x: X) => Y) => (x: X) => R
+export type AType = <X, R>(f: (x: X) => R) => (x: X) => R
+export type TType = <X>(x: X) => <R>(f: (y: X) => R) => R
+export type WType = <X, R>(f: (x: X) => (y: X) => R) => (x: X) => R
+export type CType = <X, Y, R>(f: (x: X) => (y: Y) => R) => (y: Y) => (x: X) => R
+export type PType = <RG, R>(f: (x: RG) => (y: RG) => R) => <X, Y>(g: (x: X | Y) => RG) => (x: X) => (y: Y) => R
 export type UType = (f: any) => any
 export type YType = (f: any) => any
