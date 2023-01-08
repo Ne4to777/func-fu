@@ -2,6 +2,9 @@ import {expectType} from 'tsd';
 import {ifElse} from '../../src/types';
 import {PN, PS, PT, pn, num2true, num2str, num2false, num2trueAsync, num2strAsync, num2falseAsync} from '../utils';
 
+expectType<PT>(ifElse(num2true, num2true)(1, 1))
+expectType<PT>(ifElse(num2true, num2true, num2str)(1, 1))
+
 expectType<PT>(ifElse(num2true, num2true)(1))
 expectType<PT>(ifElse(num2true, num2true, num2str)(1))
 

@@ -7,7 +7,8 @@ type ArgFunctionTail<X, R> = (x: Awaited<X>) => R
 type ReturnFunction<X, R, Y, Z> = (x?: X | Promise<X>, y?: Y | Promise<Y>, z?: Z | Promise<Z>) => Promise<Awaited<R>>
 
 export type PipeSync = {
-    <A, Y, Z>(): ReturnFunctionSync<A, A, Y, Z>
+    <A, Y, Z>(
+    ): ReturnFunctionSync<A, A, Y, Z>
     <A, B, Y, Z>(
         f0: ArgFunctionHeadSync<A, B, Y, Z>,
     ): ReturnFunctionSync<A, B, Y, Z>;
@@ -83,7 +84,10 @@ export type PipeSync = {
         f8: ArgFunctionTailSync<I, J>,
         f9: ArgFunctionTailSync<J, K>,
     ): ReturnFunctionSync<A, K, Y, Z>
-     <A, B, Y, Z>(f0: ArgFunctionHeadSync<A, B, Y, Z>, ...fs: ArgFunctionTailSync<A, any>[]): ReturnFunctionSync<any, any, Y, Z>
+     <A, B, Y, Z>(
+         f0: ArgFunctionHeadSync<A, B, Y, Z>,
+         ...fs: ArgFunctionTailSync<any, any>[]
+     ): ReturnFunctionSync<A, any, Y, Z>
 }
 
 export type Pipe = {
@@ -163,5 +167,8 @@ export type Pipe = {
         f8: ArgFunctionTail<I, J>,
         f9: ArgFunctionTail<J, K>,
     ): ReturnFunction<A, K, Y, Z>
-    <A, B, Y, Z>(f0: ArgFunctionHead<A, B, Y, Z>, ...fs: ArgFunctionTail<A, any>[]): ReturnFunction<any, any, Y, Z>
+    <A, B, Y, Z>(
+        f0: ArgFunctionHead<A, B, Y, Z>,
+        ...fs: ArgFunctionTail<any, any>[]
+    ): ReturnFunction<A, any, Y, Z>
 }

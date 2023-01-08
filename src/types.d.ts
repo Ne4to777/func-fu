@@ -4,6 +4,7 @@ import {ParapipeSync, Parapipe} from './compositors/parapipe.d'
 import {SideSync, Side} from './compositors/side.d'
 import {IfElseSync, IfElse} from './compositors/condition.d'
 import {ThrowErrorSync, ThrowError, TryCatchSync, TryCatch} from './compositors/exception.d'
+import {MapSync, Map} from './compositors/array.d'
 import {IType, KType, SType, BType, AType, TType, WType, CType, PType, UType, YType} from './combinators.d'
 
 export declare const pipeSync: PipeSync
@@ -26,6 +27,9 @@ export declare const throwError: ThrowError
 
 export declare const tryCatchSync: TryCatchSync
 export declare const tryCatch: TryCatch
+
+export declare const mapSync: MapSync
+export declare const map: Map
 
 export declare const I: IType
 export declare const K: KType

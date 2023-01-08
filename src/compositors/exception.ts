@@ -20,21 +20,21 @@ export const throwError: ThrowError = Constructor => async x => {
 /**
  * Try/Catch Synchronous
  */
-export const tryCatchSync: TryCatchSync = (f: any, t = (y: any, z: any) => z) => (x: any) => {
+export const tryCatchSync: TryCatchSync = (f: any, t = (w: any, x: any, y?: any, z?: any) => w) => (x: any, y?: any, z?: any) => {
     try {
-        return f(x)
+        return f(x, y, z)
     } catch (err) {
-        return t(err, x)
+        return t(err, x, y, z)
     }
 }
 /**
  * Try/Catch Asynchronous
  */
-export const tryCatch: TryCatch = (f: any, t = (y: any, z: any) => z) => async (x: any) => {
-    const res = await x
+export const tryCatch: TryCatch = (f: any, t = (w: any, x: any, y?: any, z?: any) => w) => async (x: any, y?: any, z?: any) => {
+    const [xx, yy, zz] = await Promise.all([x, y, z])
     try {
-        return await f(res)
+        return await f(xx, yy, zz)
     } catch (err) {
-        return t(err, res)
+        return t(err, xx, yy, zz)
     }
 }

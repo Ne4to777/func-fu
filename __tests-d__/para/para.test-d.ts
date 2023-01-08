@@ -2,6 +2,14 @@ import {expectType} from 'tsd';
 import {para} from '../../src/types';
 import {P, N, S, pn, num2num, num2numAsync, num2str, num2strAsync, identity, identityAsync} from '../utils';
 
+expectType<P<[N]>>(para(identity)());
+expectType<P<[N]>>(para(num2num)());
+expectType<P<[S]>>(para(num2str)());
+
+expectType<P<[N]>>(para(identity)(1, 1));
+expectType<P<[N]>>(para(num2num)(1, 1));
+expectType<P<[S]>>(para(num2str)(1, 1));
+
 expectType<P<[N]>>(para(identity)(1));
 expectType<P<[N]>>(para(num2num)(1));
 expectType<P<[S]>>(para(num2str)(1));

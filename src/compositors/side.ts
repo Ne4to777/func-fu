@@ -3,15 +3,15 @@ import type {SideSync, Side} from '../compositors/side.d'
 /**
  * Side Synchronous
  */
-export const sideSync: SideSync = f => x => {
-    f(x);
+export const sideSync: SideSync = f => (x, y, z) => {
+    f(x, y, z);
     return x
 }
 /**
  * Side Asynchronous
  */
-export const side: Side = f => async x => {
-    const res = await x
-    await f(res)
-    return res
+export const side: Side = f => async (x, y, z) => {
+    const [xx, yy, zz] = await Promise.all([x, y, z])
+    await f(xx, yy, zz)
+    return xx
 }

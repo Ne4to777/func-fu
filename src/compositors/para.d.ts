@@ -1,165 +1,167 @@
-type Func<X, R> = (x: X) => R
+type ArgFunctionSync<X, R, Y, Z> = (x: X, y: Y, z: Z) => R
+type ReturnFunctionSync<X, R, Y, Z> = (x?: X, y?: Y, z?: Z) => R
 
-type ArgFunctionSync<X, R> = Func<X, R>
-type ReturnFunctionSync<X, R> = Func<X, R>
-
-type ArgFunction<X, R> = Func<X, R>
-type ReturnFunction<X, R> = (x: X | Promise<X>) => Promise<R>
+type ArgFunction<X, R, Y, Z> = (x: Awaited<X>, y: Awaited<Y>, z: Awaited<Z>) => R
+type ReturnFunction<X, R, Y, Z> = (x?: X | Promise<X>, y?: Y | Promise<Y>, z?: Z | Promise<Z>) => Promise<R>
 
 export type ParaSync = {
-    <A, B>(
-        f1: ArgFunctionSync<A, B>,
-    ): ReturnFunctionSync<A, [B]>;
-    <A, B, C>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>
-    ): ReturnFunctionSync<A, [B, C]>
-    <A, B, C, D>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-    ): ReturnFunctionSync<A, [B, C, D]>
-    <A, B, C, D, E>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-        f4: ArgFunctionSync<A, E>,
-    ): ReturnFunctionSync<A, [B, C, D, E]>
-    <A, B, C, D, E, F>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-        f4: ArgFunctionSync<A, E>,
-        f5: ArgFunctionSync<A, F>,
-    ): ReturnFunctionSync<A, [B, C, D, E, F]>
-    <A, B, C, D, E, F, G>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-        f4: ArgFunctionSync<A, E>,
-        f5: ArgFunctionSync<A, F>,
-        f6: ArgFunctionSync<A, G>,
-    ): ReturnFunctionSync<A, [B, C, D, E, F, G]>
-    <A, B, C, D, E, F, G, H>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-        f4: ArgFunctionSync<A, E>,
-        f5: ArgFunctionSync<A, F>,
-        f6: ArgFunctionSync<A, G>,
-        f7: ArgFunctionSync<A, [B, C, D, E, F, G, H]>,
-    ): ReturnFunctionSync<A, H>
-    <A, B, C, D, E, F, G, H, I>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-        f4: ArgFunctionSync<A, E>,
-        f5: ArgFunctionSync<A, F>,
-        f6: ArgFunctionSync<A, G>,
-        f7: ArgFunctionSync<A, H>,
-        f8: ArgFunctionSync<A, I>,
-    ): ReturnFunctionSync<A, [B, C, D, E, F, G, H, I]>
-    <A, B, C, D, E, F, G, H, I, J>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-        f4: ArgFunctionSync<A, E>,
-        f5: ArgFunctionSync<A, F>,
-        f6: ArgFunctionSync<A, G>,
-        f7: ArgFunctionSync<A, H>,
-        f8: ArgFunctionSync<A, I>,
-        f9: ArgFunctionSync<A, J>,
-    ): ReturnFunctionSync<A, [B, C, D, E, F, G, H, I, J]>
-    <A, B, C, D, E, F, G, H, I, J, K>(
-        f1: ArgFunctionSync<A, B>,
-        f2: ArgFunctionSync<A, C>,
-        f3: ArgFunctionSync<A, D>,
-        f4: ArgFunctionSync<A, E>,
-        f5: ArgFunctionSync<A, F>,
-        f6: ArgFunctionSync<A, G>,
-        f7: ArgFunctionSync<A, H>,
-        f8: ArgFunctionSync<A, I>,
-        f9: ArgFunctionSync<A, J>,
-        f10: ArgFunctionSync<A, K>,
-    ): ReturnFunctionSync<A, [B, C, D, E, F, G, H, I, J, K]>
-    (...fs: Func<any, any>[]): (x: any) => any[]
+    <A, B, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+    ): ReturnFunctionSync<A, [B], Y, Z>;
+    <A, B, C, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>
+    ): ReturnFunctionSync<A, [B, C], Y, Z>
+    <A, B, C, D, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D], Y, Z>
+    <A, B, C, D, E, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+        f3: ArgFunctionSync<A, E, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D, E], Y, Z>
+    <A, B, C, D, E, F, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+        f3: ArgFunctionSync<A, E, Y, Z>,
+        f4: ArgFunctionSync<A, F, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D, E, F], Y, Z>
+    <A, B, C, D, E, F, G, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+        f3: ArgFunctionSync<A, E, Y, Z>,
+        f4: ArgFunctionSync<A, F, Y, Z>,
+        f5: ArgFunctionSync<A, G, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D, E, F, G], Y, Z>
+    <A, B, C, D, E, F, G, H, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+        f3: ArgFunctionSync<A, E, Y, Z>,
+        f4: ArgFunctionSync<A, F, Y, Z>,
+        f5: ArgFunctionSync<A, G, Y, Z>,
+        f6: ArgFunctionSync<A, H, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D, E, F, G, H], Y, Z>
+    <A, B, C, D, E, F, G, H, I, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+        f3: ArgFunctionSync<A, E, Y, Z>,
+        f4: ArgFunctionSync<A, F, Y, Z>,
+        f5: ArgFunctionSync<A, G, Y, Z>,
+        f6: ArgFunctionSync<A, H, Y, Z>,
+        f7: ArgFunctionSync<A, I, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D, E, F, G, H, I], Y, Z>
+    <A, B, C, D, E, F, G, H, I, J, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+        f3: ArgFunctionSync<A, E, Y, Z>,
+        f4: ArgFunctionSync<A, F, Y, Z>,
+        f5: ArgFunctionSync<A, G, Y, Z>,
+        f6: ArgFunctionSync<A, H, Y, Z>,
+        f7: ArgFunctionSync<A, I, Y, Z>,
+        f8: ArgFunctionSync<A, J, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D, E, F, G, H, I, J], Y, Z>
+    <A, B, C, D, E, F, G, H, I, J, K, Y, Z>(
+        f0: ArgFunctionSync<A, B, Y, Z>,
+        f1: ArgFunctionSync<A, C, Y, Z>,
+        f2: ArgFunctionSync<A, D, Y, Z>,
+        f3: ArgFunctionSync<A, E, Y, Z>,
+        f4: ArgFunctionSync<A, F, Y, Z>,
+        f5: ArgFunctionSync<A, G, Y, Z>,
+        f6: ArgFunctionSync<A, H, Y, Z>,
+        f7: ArgFunctionSync<A, I, Y, Z>,
+        f8: ArgFunctionSync<A, J, Y, Z>,
+        f9: ArgFunctionSync<A, K, Y, Z>,
+    ): ReturnFunctionSync<A, [B, C, D, E, F, G, H, I, J, K], Y, Z>
+    <A, Y, Z>(
+        ...fs: ArgFunctionSync<A, any, Y, Z>[],
+    ): ReturnFunctionSync<A, any[], Y, Z>;
 }
 
 export type Para = {
-    <A, B>(
-        f1: ArgFunction<A, B>,
-    ): ReturnFunction<A, [Awaited<B>]>
-    <A, B, C>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>]>
-    <A, B, C, D>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>]>
-    <A, B, C, D, E>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-        f4: ArgFunction<A, E>,
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>]>
-    <A, B, C, D, E, F>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-        f4: ArgFunction<A, E>,
-        f5: ArgFunction<A, F>,
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>]>
-    <A, B, C, D, E, F, G>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-        f4: ArgFunction<A, E>,
-        f5: ArgFunction<A, F>,
-        f6: ArgFunction<A, G>,
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>]>
-    <A, B, C, D, E, F, G, H>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-        f4: ArgFunction<A, E>,
-        f5: ArgFunction<A, F>,
-        f6: ArgFunction<A, G>,
-        f7: ArgFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>]>,
-    ): ReturnFunction<A, H>
-    <A, B, C, D, E, F, G, H, I>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-        f4: ArgFunction<A, E>,
-        f5: ArgFunction<A, F>,
-        f6: ArgFunction<A, G>,
-        f7: ArgFunction<A, H>,
-        f8: ArgFunction<A, I>,
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>]>
-    <A, B, C, D, E, F, G, H, I, J>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-        f4: ArgFunction<A, E>,
-        f5: ArgFunction<A, F>,
-        f6: ArgFunction<A, G>,
-        f7: ArgFunction<A, H>,
-        f8: ArgFunction<A, I>,
-        f9: ArgFunction<A, J>,
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>, Awaited<J>]>
-    <A, B, C, D, E, F, G, H, I, J, K>(
-        f1: ArgFunction<A, B>,
-        f2: ArgFunction<A, C>,
-        f3: ArgFunction<A, D>,
-        f4: ArgFunction<A, E>,
-        f5: ArgFunction<A, F>,
-        f6: ArgFunction<A, G>,
-        f7: ArgFunction<A, H>,
-        f8: ArgFunction<A, I>,
-        f9: ArgFunction<A, J>,
-        f10: ArgFunction<A, K>,
-    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>, Awaited<J>, Awaited<K>]>
-    (...fs: Func<any, any>[]): (x: any) => Promise<any[]>
+    <A, B, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>], Y, Z>
+    <A, B, C, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>], Y, Z>
+    <A, B, C, D, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>], Y, Z>
+    <A, B, C, D, E, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+        f3: ArgFunction<A, E, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>], Y, Z>
+    <A, B, C, D, E, F, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+        f3: ArgFunction<A, E, Y, Z>,
+        f4: ArgFunction<A, F, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>], Y, Z>
+    <A, B, C, D, E, F, G, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+        f3: ArgFunction<A, E, Y, Z>,
+        f4: ArgFunction<A, F, Y, Z>,
+        f5: ArgFunction<A, G, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>], Y, Z>
+    <A, B, C, D, E, F, G, H, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+        f3: ArgFunction<A, E, Y, Z>,
+        f4: ArgFunction<A, F, Y, Z>,
+        f5: ArgFunction<A, G, Y, Z>,
+        f6: ArgFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>], Y, Z>,
+    ): ReturnFunction<A, H, Y, Z>
+    <A, B, C, D, E, F, G, H, I, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+        f3: ArgFunction<A, E, Y, Z>,
+        f4: ArgFunction<A, F, Y, Z>,
+        f5: ArgFunction<A, G, Y, Z>,
+        f6: ArgFunction<A, H, Y, Z>,
+        f7: ArgFunction<A, I, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>], Y, Z>
+    <A, B, C, D, E, F, G, H, I, J, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+        f3: ArgFunction<A, E, Y, Z>,
+        f4: ArgFunction<A, F, Y, Z>,
+        f5: ArgFunction<A, G, Y, Z>,
+        f6: ArgFunction<A, H, Y, Z>,
+        f7: ArgFunction<A, I, Y, Z>,
+        f8: ArgFunction<A, J, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>, Awaited<J>], Y, Z>
+    <A, B, C, D, E, F, G, H, I, J, K, Y, Z>(
+        f0: ArgFunction<A, B, Y, Z>,
+        f1: ArgFunction<A, C, Y, Z>,
+        f2: ArgFunction<A, D, Y, Z>,
+        f3: ArgFunction<A, E, Y, Z>,
+        f4: ArgFunction<A, F, Y, Z>,
+        f5: ArgFunction<A, G, Y, Z>,
+        f6: ArgFunction<A, H, Y, Z>,
+        f7: ArgFunction<A, I, Y, Z>,
+        f8: ArgFunction<A, J, Y, Z>,
+        f9: ArgFunction<A, K, Y, Z>,
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>, Awaited<J>, Awaited<K>], Y, Z>
+    <A, Y, Z>(
+        ...fs: ArgFunction<A, any, Y, Z>[],
+    ): ReturnFunction<A, Awaited<any>[], Y, Z>;
 }
