@@ -1,6 +1,3 @@
-type UnPromise<T> = T extends Promise<infer K> ? K : T
-type UP<T> = UnPromise<T>
-
 type Func<X, R> = (x: X) => R
 
 type ArgFunctionSync<X, R> = Func<X, R>
@@ -91,29 +88,29 @@ export type ParaSync = {
 export type Para = {
     <A, B>(
         f1: ArgFunction<A, B>,
-    ): ReturnFunction<A, [UP<B>]>
+    ): ReturnFunction<A, [Awaited<B>]>
     <A, B, C>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>
-    ): ReturnFunction<A, [UP<B>, UP<C>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>]>
     <A, B, C, D>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>,
         f3: ArgFunction<A, D>,
-    ): ReturnFunction<A, [UP<B>, UP<C>, UP<D>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>]>
     <A, B, C, D, E>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>,
         f3: ArgFunction<A, D>,
         f4: ArgFunction<A, E>,
-    ): ReturnFunction<A, [UP<B>, UP<C>, UP<D>, UP<E>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>]>
     <A, B, C, D, E, F>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>,
         f3: ArgFunction<A, D>,
         f4: ArgFunction<A, E>,
         f5: ArgFunction<A, F>,
-    ): ReturnFunction<A, [UP<B>, UP<C>, UP<D>, UP<E>, UP<F>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>]>
     <A, B, C, D, E, F, G>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>,
@@ -121,7 +118,7 @@ export type Para = {
         f4: ArgFunction<A, E>,
         f5: ArgFunction<A, F>,
         f6: ArgFunction<A, G>,
-    ): ReturnFunction<A, [UP<B>, UP<C>, UP<D>, UP<E>, UP<F>, UP<G>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>]>
     <A, B, C, D, E, F, G, H>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>,
@@ -129,7 +126,7 @@ export type Para = {
         f4: ArgFunction<A, E>,
         f5: ArgFunction<A, F>,
         f6: ArgFunction<A, G>,
-        f7: ArgFunction<A, [UP<B>, UP<C>, UP<D>, UP<E>, UP<F>, UP<G>, UP<H>]>,
+        f7: ArgFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>]>,
     ): ReturnFunction<A, H>
     <A, B, C, D, E, F, G, H, I>(
         f1: ArgFunction<A, B>,
@@ -140,7 +137,7 @@ export type Para = {
         f6: ArgFunction<A, G>,
         f7: ArgFunction<A, H>,
         f8: ArgFunction<A, I>,
-    ): ReturnFunction<A, [UP<B>, UP<C>, UP<D>, UP<E>, UP<F>, UP<G>, UP<H>, UP<I>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>]>
     <A, B, C, D, E, F, G, H, I, J>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>,
@@ -151,7 +148,7 @@ export type Para = {
         f7: ArgFunction<A, H>,
         f8: ArgFunction<A, I>,
         f9: ArgFunction<A, J>,
-    ): ReturnFunction<A, [UP<B>, UP<C>, UP<D>, UP<E>, UP<F>, UP<G>, UP<H>, UP<I>, UP<J>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>, Awaited<J>]>
     <A, B, C, D, E, F, G, H, I, J, K>(
         f1: ArgFunction<A, B>,
         f2: ArgFunction<A, C>,
@@ -163,6 +160,6 @@ export type Para = {
         f8: ArgFunction<A, I>,
         f9: ArgFunction<A, J>,
         f10: ArgFunction<A, K>,
-    ): ReturnFunction<A, [UP<B>, UP<C>, UP<D>, UP<E>, UP<F>, UP<G>, UP<H>, UP<I>, UP<J>, UP<K>]>
+    ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>, Awaited<J>, Awaited<K>]>
     (...fs: Func<any, any>[]): (x: any) => Promise<any[]>
 }

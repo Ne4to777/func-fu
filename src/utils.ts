@@ -16,3 +16,5 @@ export const startMeasure: any = () => (startTime => () => log(metricsFormatter(
 ])))(hrtime())
 
 export const typeOf = <X>(x: X): string => Object.prototype.toString.call(x).slice(8, -1).toLowerCase()
+
+export const promiseAll = <X>(xs: X[]) => Promise.all(xs)

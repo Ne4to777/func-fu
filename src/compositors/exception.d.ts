@@ -1,5 +1,3 @@
-type UnPromise<T> = T extends Promise<infer K> ? K : T
-
 export type ThrowErrorSync = <X, R>(Constructor: (x: X) => R) => (x: X) => never
 export type ThrowError = <X, R>(Constructor: (x: X) => R) => (x: X | Promise<X>) => Promise<never>
 
@@ -9,6 +7,6 @@ export type TryCatchSync = {
 }
 
 export type TryCatch = {
-    <X, R>(f: (x: UnPromise<X>) => R): (x: X) => Promise<UnPromise<R> | UnPromise<X>>
-    <X, R, H>(f: (x: UnPromise<X>) => R, t: (err: Error, x: UnPromise<X>) => H): (x: X) => Promise<UnPromise<R> | UnPromise<H>>
+    <X, R>(f: (x: Awaited<X>) => R): (x: X) => Promise<Awaited<R> | Awaited<X>>
+    <X, R, H>(f: (x: Awaited<X>) => R, t: (err: Error, x: Awaited<X>) => H): (x: X) => Promise<Awaited<R> | Awaited<H>>
 }

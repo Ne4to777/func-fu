@@ -2,6 +2,14 @@ import {expectType} from 'tsd';
 import {pipe} from '../../src/types';
 import {PN, PS, pn, num2num, num2numAsync, num2str, num2strAsync, identity, identityAsync, N, S} from '../utils';
 
+expectType<PN>(pipe(identity)());
+expectType<PN>(pipe(num2num)());
+expectType<PS>(pipe(num2str)());
+
+expectType<PN>(pipe(identity)(1, 1));
+expectType<PN>(pipe(num2num)(1, 1));
+expectType<PS>(pipe(num2str)(1, 1));
+
 expectType<PN>(pipe(identity)(1));
 expectType<PN>(pipe(num2num)(1));
 expectType<PS>(pipe(num2str)(1));
