@@ -1,4 +1,4 @@
-import type {ParapipeSync, Parapipe} from '../compositors/parapipe.d'
+import type {ParapipeSync, Parapipe} from '../types/parapipe'
 
 /**
  * Parallel first, Pipe Second Synchronous

@@ -17,4 +17,4 @@ export const startMeasure: any = () => (startTime => () => log(metricsFormatter(
 
 export const typeOf = <X>(x: X): string => Object.prototype.toString.call(x).slice(8, -1).toLowerCase()
 
-export const promiseAll = <X>(xs: X[]) => Promise.all(xs)
+export const promiseAll: typeof Promise.all = Function.prototype.call.bind(Promise.all.bind)

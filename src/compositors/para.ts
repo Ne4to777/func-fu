@@ -1,4 +1,4 @@
-import {ParaSync, Para} from '../compositors/para.d'
+import {ParaSync, Para} from '../types/para'
 
 /**
  * Parallel Synchronous

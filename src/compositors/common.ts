@@ -5,7 +5,7 @@ import type {
     Curry,
     Parallelize,
     Uncurry
-} from './common.d'
+} from '../types/common'
 
 /**
  * Curry

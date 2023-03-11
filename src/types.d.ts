@@ -1,11 +1,11 @@
-import {PipeSync, Pipe} from './compositors/pipe.d'
-import {ParaSync, Para} from './compositors/para.d'
-import {ParapipeSync, Parapipe} from './compositors/parapipe.d'
-import {SideSync, Side} from './compositors/side.d'
-import {IfElseSync, IfElse} from './compositors/condition.d'
-import {ThrowErrorSync, ThrowError, TryCatchSync, TryCatch} from './compositors/exception.d'
-import {MapSync, Map} from './compositors/array.d'
-import {IType, KType, SType, BType, AType, TType, WType, CType, PType, UType, YType} from './combinators.d'
+import {PipeSync, Pipe} from './types/pipe'
+import {ParaSync, Para} from './types/para'
+import {ParapipeSync, Parapipe} from './types/parapipe'
+import {SideSync, Side} from './types/side'
+import {IfElseSync, IfElse} from './types/condition'
+import {ThrowErrorSync, ThrowError, TryCatchSync, TryCatch} from './types/exception'
+import {MapSync, Map} from './types/array'
+import {IType, KType, SType, BType, AType, TType, WType, CType, PType, UType, YType} from './types/combinators'
 
 export declare const pipeSync: PipeSync
 export declare const pipe: Pipe

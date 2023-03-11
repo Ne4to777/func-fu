@@ -81,7 +81,7 @@ export type ParaSync = {
         f9: ArgFunctionSync<A, K, Y, Z>,
     ): ReturnFunctionSync<A, [B, C, D, E, F, G, H, I, J, K], Y, Z>
     <A, Y, Z>(
-        ...fs: ArgFunctionSync<A, any, Y, Z>[],
+        ...fs: ArgFunctionSync<A, any, Y, Z>[]
     ): ReturnFunctionSync<A, any[], Y, Z>;
 }
 
@@ -162,6 +162,6 @@ export type Para = {
         f9: ArgFunction<A, K, Y, Z>,
     ): ReturnFunction<A, [Awaited<B>, Awaited<C>, Awaited<D>, Awaited<E>, Awaited<F>, Awaited<G>, Awaited<H>, Awaited<I>, Awaited<J>, Awaited<K>], Y, Z>
     <A, Y, Z>(
-        ...fs: ArgFunction<A, any, Y, Z>[],
+        ...fs: ArgFunction<A, any, Y, Z>[]
     ): ReturnFunction<A, Awaited<any>[], Y, Z>;
 }

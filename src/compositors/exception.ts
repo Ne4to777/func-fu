@@ -3,7 +3,7 @@ import {
     ThrowError,
     TryCatch,
     TryCatchSync,
-} from './exception.d'
+} from '../types/exception'
 
 /**
  * Throw Error Synchronous

@@ -50,6 +50,28 @@ export declare function num2never(x: N): E
 
 export declare function num2neverAsync(x: N): PE
 
+export declare function str2num(x: S): N
+
+export declare function str2numAsync(x: S): PN
+
+export declare function str2num2(x: S, y: S): N
+
+export declare function str2num2C(x: S): (y: S) => N
+
+export declare function str2num2Async(x: S, y: S): PN
+
+export declare function true2num(x: T): N
+
+export declare function true2numAsync(x: T): PN
+
+export declare function false2num(x: F): N
+
+export declare function false2numAsync(x: F): PN
+
+export declare function never2num(x: E): N
+
+export declare function never2numAsync(x: E): PN
+
 export declare const pn: PN
 export declare const pb: PB
 export declare const pt: PT

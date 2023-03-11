@@ -1,4 +1,4 @@
-import type {SideSync, Side} from '../compositors/side.d'
+import type {SideSync, Side} from '../types/side'
 
 /**
  * Side Synchronous
